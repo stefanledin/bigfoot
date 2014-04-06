@@ -1,12 +1,8 @@
 <?php
-
 /**
- * Remove width- and height
- * attributes from img tags
+ * Redigera vilka klasser som body får
  */
-function remove_thumbnail_dimensions( $html ) {
-    $html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
-    return $html;
+function add_body_classes( $classes ) {
+    return $classes;
 }
-add_filter( 'post_thumbnail_html', 'remove_thumbnail_dimensions', 10 );
-add_filter( 'image_send_to_editor', 'remove_thumbnail_dimensions', 10 );
+add_filter( 'body_class', 'add_body_classes' );
