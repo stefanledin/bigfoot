@@ -11,3 +11,11 @@ function remove_thumbnail_dimensions( $html ) {
 }
 add_filter( 'post_thumbnail_html', 'remove_thumbnail_dimensions', 10 );
 add_filter( 'image_send_to_editor', 'remove_thumbnail_dimensions', 10 );
+
+/**
+ * Helper for getting the URL to a thumbnail
+ */
+function get_thumbnail_url( $id, $size = null ) {
+	$imageObject = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID, $size ) );
+	return $imageObject[0];
+}
